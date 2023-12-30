@@ -11,9 +11,17 @@ class Buyer extends User{
 
     constructor(){
         console.log("A new buyer is created");
+        this.cart = new Cart();
     }
 
-    addToCart(product , quantity){
+    addToCart(productName , quantity){
+
+        this.cart.products.push({
+            productName : productName,
+            quantity : quantity
+        });
+
+        // this.cart.price += 
 
     }
 
@@ -25,28 +33,23 @@ class Buyer extends User{
 }
 
 class Seller{
-
-
 }
 
 class Product{
-
 }
 
 class Cart{
 
     constructor(){
-        this.product = [];
+        this.products = [];
         this.price = 0;
     }
 
 }
 
 class Purchase{
-
 }
 
 class Review{
-
 }
 

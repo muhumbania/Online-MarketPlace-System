@@ -35,13 +35,20 @@ class Buyer extends User{
         } else{
             console.log('Add products to you cart before any purchase');
         }
-
     }
-
-
 }
 
 class Seller{
+
+    constructor(){
+        super('Benit', 'benit@gmail.com');
+        console.log("A new seller is created");
+        this.stock = new Cart();
+    }
+
+    // addToStock(name , quantity , price){
+
+    // }
 }
 
 class Product{

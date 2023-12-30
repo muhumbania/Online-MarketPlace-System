@@ -30,6 +30,8 @@ class Buyer extends User{
     purchase(){
 
         this.purchased.push(new Purchase(this));
+
+        this.cart = [];
     }
 
 
@@ -63,7 +65,7 @@ class Purchase{
         this.user = user;
         this.date = new Date();
 
-        console.log(`Congratulations ${user.name} you just purchased ${user.cart} for the total of ${user.cart.price} at ${date}`);
+        console.log(`Congratulations ${user.name} you just purchased ${user.cart} for the total of ${user.cart.price} at ${this.date}`);
     }
 }
 
@@ -79,5 +81,9 @@ buyer1.addToCart(product1 , 5);
 buyer1.addToCart(product2 , 12);
 
 // console.log(product1, '\n');
+console.log(buyer1.cart);
+
+buyer1.purchase();
+
 console.log(buyer1.cart);
 

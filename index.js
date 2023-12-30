@@ -16,14 +16,25 @@ class Buyer extends User{
         this.purchased = [];
     }
 
-    addToCart(product , quantity){
+    addToCart(name , quantity , seller){
 
-        this.cart.products.push({
-            productName : product.name,
-            quantity : quantity
-        });
+        const productToAdd = seller.stock.filter(stock => stock.name === name)[0];
 
-        this.cart.price += product.price * quantity; 
+        if(productToAdd.quantity > quantity){
+            this.cart.products.push({
+                productName : name,
+                quantity : quantity
+            });
+    
+            this.cart.price += productToAdd.price * quantity;
+
+            seller.stock[seller.stock.indexOf(productToAdd)].quantity -= quantity;
+
+        } else{
+            console.log("Your seller doesnt have enough quantity, look for another");
+        }
+
+        
 
     }
 
@@ -67,7 +78,6 @@ class Cart{
         this.products = [];
         this.price = 0;
     }
-
 }
 
 class Purchase{
@@ -103,6 +113,15 @@ class Review{
 
 const seller1 = new Seller();
 seller1.addToStock('Pixel5' , 8 , 300);
+seller1.addToStock('Pixel3' , 7 , 100);
+seller1.addToStock('Pixel4' , 5 , 250);
+seller1.addToStock('Iphone15' , 10 , 1000);
 
 console.log(seller1.stock);
+
+const buyer1 = new Buyer();
+buyer1.addToCart('Pixel5' , 5 , seller1);
+
+console.log('Buyer1 Cart: ' , buyer1.cart);
+console.log('Seller1 Stock:' , seller1.stock);
 

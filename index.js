@@ -29,9 +29,13 @@ class Buyer extends User{
 
     purchase(){
 
-        this.purchased.push(new Purchase(this));
+        if(this.cart.length !== 0){
+            this.purchased.push(new Purchase(this));
+            this.cart = [];
+        } else{
+            console.log('Add products to you cart before any purchase');
+        }
 
-        this.cart = [];
     }
 
 
@@ -86,4 +90,6 @@ console.log(buyer1.cart);
 buyer1.purchase();
 
 console.log(buyer1.cart);
+
+buyer1.purchase();
 

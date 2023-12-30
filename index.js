@@ -1,4 +1,9 @@
 class User{
+    
+    constructor(name, email){
+        this.name = name;
+        this.email = email;
+    }
 
 }
 
@@ -18,10 +23,10 @@ class Cart{
 
 }
 
-class Purchasse{
+class Purchase{
 
 }
 
 class Review{
-    
+
 }

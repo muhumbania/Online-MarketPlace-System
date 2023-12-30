@@ -38,17 +38,17 @@ class Buyer extends User{
     }
 }
 
-class Seller{
+class Seller extends User{
 
     constructor(){
         super('Benit', 'benit@gmail.com');
         console.log("A new seller is created");
-        this.stock = new Cart();
+        this.stock = [];
     }
 
-    // addToStock(name , quantity , price){
-
-    // }
+    addToStock(name , quantity , price){
+        this.stock.push(new Product(name , quantity , price));
+    }
 }
 
 class Product{
@@ -83,20 +83,26 @@ class Purchase{
 class Review{
 }
 
-product1 = new Product('Iphone12' , 10 , 500);
-product2 = new Product('Airpod', 10 , 30)
-buyer1 = new Buyer();
+// product1 = new Product('Iphone12' , 10 , 500);
+// product2 = new Product('Airpod', 10 , 30)
+// buyer1 = new Buyer();
 
-buyer1.addToCart(product1 , 3);
-buyer1.addToCart(product1 , 5);
-buyer1.addToCart(product2 , 12);
+// buyer1.addToCart(product1 , 3);
+// buyer1.addToCart(product1 , 5);
+// buyer1.addToCart(product2 , 12);
 
-// console.log(product1, '\n');
-console.log(buyer1.cart);
+// // console.log(product1, '\n');
+// console.log(buyer1.cart);
 
-buyer1.purchase();
+// buyer1.purchase();
 
-console.log(buyer1.cart);
+// console.log(buyer1.cart);
 
-buyer1.purchase();
+// buyer1.purchase();
+
+
+const seller1 = new Seller();
+seller1.addToStock('Pixel5' , 8 , 300);
+
+console.log(seller1.stock);
 

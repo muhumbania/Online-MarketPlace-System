@@ -13,6 +13,7 @@ class Buyer extends User{
         super('Franklin', 'franklin@gmail.com');
         console.log("A new buyer is created");
         this.cart = new Cart();
+        this.purchased = [];
     }
 
     addToCart(product , quantity){
@@ -28,6 +29,7 @@ class Buyer extends User{
 
     purchase(){
 
+        this.purchased.push(new Purchase(this));
     }
 
 
@@ -56,16 +58,25 @@ class Cart{
 }
 
 class Purchase{
+
+    constructor(user){
+        this.user = user;
+        this.date = new Date();
+
+        console.log(`Congratulations ${user.name} you just purchased ${user.cart} for the total of ${user.cart.price} at ${date}`);
+    }
 }
 
 class Review{
 }
 
 product1 = new Product('Iphone12' , 10 , 500);
+product2 = new Product('Airpod', 10 , 30)
 buyer1 = new Buyer();
 
 buyer1.addToCart(product1 , 3);
-buyer1.addToCart(product1, 5);
+buyer1.addToCart(product1 , 5);
+buyer1.addToCart(product2 , 12);
 
 // console.log(product1, '\n');
 console.log(buyer1.cart);

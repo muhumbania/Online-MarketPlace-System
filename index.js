@@ -47,6 +47,10 @@ class Buyer extends User{
             console.log('Add products to you cart before any purchase');
         }
     }
+
+    review(seller , stars , comment){
+        seller.review.push(new Review(stars , comment , this.name));
+    }
 }
 
 class Seller extends User{
@@ -55,6 +59,7 @@ class Seller extends User{
         super('Benit', 'benit@gmail.com');
         console.log("A new seller is created");
         this.stock = [];
+        this.review = [];
     }
 
     addToStock(name , quantity , price){
@@ -92,9 +97,10 @@ class Purchase{
 
 class Review{
 
-    constructor(stars, comment){
+    constructor(stars, comment , buyer){
         this.stars = stars;
         this.comment = comment;
+        this.buyer = buyer;
     }
 }
 
@@ -129,4 +135,8 @@ buyer1.addToCart('Pixel5' , 5 , seller1);
 
 console.log('Buyer1 Cart: ' , buyer1.cart);
 console.log('Seller1 Stock:' , seller1.stock);
+
+buyer1.review(seller1 , 5 , "Great Seller");
+
+console.log('Seller1 Review' , seller1.review);
 

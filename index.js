@@ -91,6 +91,11 @@ class Purchase{
 }
 
 class Review{
+
+    constructor(stars, comment){
+        this.stars = stars;
+        this.comment = comment;
+    }
 }
 
 // product1 = new Product('Iphone12' , 10 , 500);
